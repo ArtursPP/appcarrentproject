@@ -4,6 +4,7 @@ package com.apprentcarproject.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 @Data
@@ -30,18 +31,23 @@ public class Customers {
 
     @Column(name = "CUSTOMER_EMAIL")
     @NotEmpty(message = "Please enter your email")
+    @Email
     private String customerEmail;
 
     @Column(name = "CUSTOMER_ADDRESS")
+    @NotEmpty(message = "Please enter your address")
     private String customerAddress;
 
     @Column(name = "CUSTOMER_POSTAL_CODE")
+    @NotEmpty(message = "Please enter your postal code")
     private String customerPostalCode;
 
     @Column(name = "CUSTOMER_CITY")
+    @NotEmpty(message = "Please enter your City")
     private String customerCity;
 
     @Column(name = "CUSTOMER_COUNTRY")
+    @NotEmpty(message = "Please enter your Country")
     private String customerCountry;
 
 }

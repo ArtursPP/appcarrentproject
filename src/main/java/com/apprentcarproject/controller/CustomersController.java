@@ -59,5 +59,10 @@ public class CustomersController {
         Customers customers = customersMapper.fromDTO(customersDTO);
         customersService.updateCustomers(customers);
     }
+
+    @PutMapping(value = "/delete({customerid})")
+    public void deleteCustomer(@PathVariable Long customerId){
+        customersService.deleteCustomer(customerId);
+    }
 }
 
