@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,6 +33,12 @@ public class CustomersController {
     public CustomersDTO getCustomerById(@PathVariable Long customerId) {
         Customers customer = customersService.getCustomersById(customerId);
         return customersMapper.toDTO(customer);
+    }
+
+    @GetMapping(value = "/customer({customerName})")
+    public List<CustomersDTO> getCustomersByCustomerName(@PathVariable String customerName){
+        List<Customers> customers = customersService.getCustomersByCustomerName(customerName);
+        return customers.stream().map(t -> customersMapper.toDTO(t)).collect(Collectors.toList());
     }
 
     @PostMapping(value = "/customer")

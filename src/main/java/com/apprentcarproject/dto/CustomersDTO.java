@@ -9,6 +9,7 @@ public class CustomersDTO {
 
 
     @JsonProperty(value="customer_id")
+
     private Long customerId;
 
     @JsonProperty(value="customer_name")

@@ -3,14 +3,26 @@ package com.apprentcarproject.service;
 import com.apprentcarproject.model.Customers;
 import com.apprentcarproject.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Component
 public class CustomersService {
 
     private CustomerRepository customerRepository;
+
+    private ExampleMatcher matcher;
+
+    @PostConstruct
+    private void init() {
+        matcher = ExampleMatcher.matchingAll()
+                .withIgnoreNullValues()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
+                .withIgnoreCase();
+    }
 
     @Autowired
     public CustomersService (CustomerRepository customerRepository){
@@ -28,5 +40,9 @@ public class CustomersService {
 
     public Customers saveNewCustomer(Customers customer) {
         return customerRepository.save(customer);
+    }
+
+    public List<Customers> getCustomersByCustomerName(String customerName) {
+        return customerRepository.findAllByCustomerNameIgnoreCase(customerName);
     }
 }
