@@ -37,5 +37,9 @@ public class Cars {
     @Column(name = "CAR_PHOTO")
     private String carPhoto;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_category_id")
+    private CarCategory carCategory;
+
 
 }

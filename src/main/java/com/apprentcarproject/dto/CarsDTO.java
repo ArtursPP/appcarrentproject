@@ -1,6 +1,7 @@
 package com.apprentcarproject.dto;
 
 
+import com.apprentcarproject.model.CarCategory;
 import com.apprentcarproject.model.TypeTransmission;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -29,5 +30,7 @@ public class CarsDTO {
 
     @JsonProperty(value = "car_photo")
     private String carPhoto;
+
+    private CarCategory carCategory;
 
 }

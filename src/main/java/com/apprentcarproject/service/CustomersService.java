@@ -38,11 +38,19 @@ public class CustomersService {
         return customerRepository.getById(customerId);
     }
 
-    public Customers saveNewCustomer(Customers customer) {
+    public Customers saveNewCustomers(Customers customer) {
         return customerRepository.save(customer);
     }
 
     public List<Customers> getCustomersByCustomerName(String customerName) {
         return customerRepository.findAllByCustomerNameIgnoreCase(customerName);
+    }
+
+    public List<Customers> getCustomersByCustomerLastName(String customerLastName) {
+        return  customerRepository.findAllByCustomerLastNameIgnoreCase(customerLastName);
+    }
+
+    public void updateCustomers(Customers customers) {
+        customerRepository.save(customers);
     }
 }

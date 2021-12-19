@@ -11,4 +11,6 @@ import java.util.List;
 public interface CustomerRepository extends JpaRepository<Customers, Long> {
 
     List<Customers> findAllByCustomerNameIgnoreCase(String customerName);
+
+    List<Customers>findAllByCustomerLastNameIgnoreCase(String customerLastName);
 }

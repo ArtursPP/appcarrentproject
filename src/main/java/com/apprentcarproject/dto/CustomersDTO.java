@@ -4,15 +4,17 @@ package com.apprentcarproject.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+
+
 @Data
 public class CustomersDTO {
 
 
     @JsonProperty(value="customer_id")
-
     private Long customerId;
 
     @JsonProperty(value="customer_name")
+
     private String customerName;
 
     @JsonProperty(value="customer_last_name")
